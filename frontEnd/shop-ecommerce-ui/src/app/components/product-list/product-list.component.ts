@@ -13,7 +13,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductListComponent {
 
   products:Product[] = [];
-  currenCategoryId:number = 1;
+  currentCategoryId:number = 1;
   previousCategoryId:number = 1;
   searchMode:boolean = false;
 
@@ -84,19 +84,26 @@ export class ProductListComponent {
     const categoryId:boolean = this.route.snapshot.paramMap.has('id');
 
     if(categoryId){
-      this.currenCategoryId = +this.route.snapshot.paramMap.get('id')!;
+      this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!;
     }else{
-      this.currenCategoryId = 1;
+      this.currentCategoryId = 1;
     }
 
-    if(this.previousCategoryId != this.currenCategoryId){
-      this.currenCategoryId = 1;
+     // Check if we have a different category than previous
+    // Note: Angular will reuse a component if it is currently being viewed
+    //
+
+    // if we have a different category id than previous
+    // then set thePageNumber back to 1
+    if (this.previousCategoryId != this.currentCategoryId) {
+      this.thePageNumber = 1;
     }
 
-    this.previousCategoryId = this.currenCategoryId;
-    console.log(`currentCategoryId=${this.currenCategoryId}, thePageNumber=${this.thePageNumber}`)
+    this.previousCategoryId = this.currentCategoryId;
 
-    this.productService.getProductListPaginate(this.currenCategoryId,
+    console.log(`currentCategoryId=${this.currentCategoryId}, thePageNumber=${this.thePageNumber}`);
+
+    this.productService.getProductListPaginate(this.currentCategoryId,
                                                this.thePageNumber - 1,
                                                this.thePageSize).subscribe(this.processResult())
   }
