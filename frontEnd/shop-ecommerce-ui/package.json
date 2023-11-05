@@ -24,6 +24,7 @@
     "@okta/okta-auth-js": "^6.4.0",
     "@okta/okta-signin-widget": "^6.2.0",
     "@popperjs/core": "^2.11.6",
+    "autoprefixer": "^10.4.16",
     "bootstrap": "^4.5.3",
     "bootstrap-icons": "^1.11.1",
     "jquery": "^3.7.1",
