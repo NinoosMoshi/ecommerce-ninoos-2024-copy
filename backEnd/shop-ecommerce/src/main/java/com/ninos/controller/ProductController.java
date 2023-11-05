@@ -39,7 +39,7 @@ public class ProductController {
 
     // http://localhost:8080/api/v1/products/search?name=<productName>
     @GetMapping("/search")
-    public Page<ProductDTO> searchCourses(@RequestParam(name = "name", defaultValue = "") String name,
+    public Page<ProductDTO> searchProducts(@RequestParam(name = "name", defaultValue = "") String name,
                                          @RequestParam(name = "page", defaultValue = "0") int page,
                                          @RequestParam(name = "size", defaultValue = "100") int size){
         return productService.findByNameContaining(name, page, size);

@@ -3,7 +3,6 @@ package com.ninos.service.product;
 import org.springframework.data.domain.Page;
 
 import com.ninos.model.dto.ProductDTO;
-import com.ninos.model.entity.Product;
 
 public interface ProductService {
 

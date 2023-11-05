@@ -13,6 +13,8 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="order_item")
 @Getter
@@ -36,6 +38,7 @@ public class OrderItem {
     @Column(name="product_id")
     private Long productId;
 
+//    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
