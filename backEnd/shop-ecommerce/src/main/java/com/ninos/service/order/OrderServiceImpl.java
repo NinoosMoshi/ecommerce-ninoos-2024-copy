@@ -22,10 +22,17 @@ public class OrderServiceImpl implements OrderService{
     private final OrderMapper orderMapper;
 
 
+//    @Override
+//    public Page<OrderDTO> findOrderByCustomerEmail(String email, int page, int size) {
+//        PageRequest pageRequest = PageRequest.of(page, size);
+//        Page<Order> ordersPage = orderRepository.findByCustomerEmail(email,pageRequest);
+//        return new PageImpl<>(ordersPage.getContent().stream().map(order -> orderMapper.entityToDto(order)).collect(Collectors.toList()),pageRequest, ordersPage.getTotalElements());
+//    }
+
     @Override
     public Page<OrderDTO> findOrderByCustomerEmail(String email, int page, int size) {
         PageRequest pageRequest = PageRequest.of(page, size);
-        Page<Order> ordersPage = orderRepository.findByCustomerEmail(email,pageRequest);
+        Page<Order> ordersPage = orderRepository.findByCustomerEmailOrderByDateCreatedDesc(email,pageRequest);
         return new PageImpl<>(ordersPage.getContent().stream().map(order -> orderMapper.entityToDto(order)).collect(Collectors.toList()),pageRequest, ordersPage.getTotalElements());
     }
 
