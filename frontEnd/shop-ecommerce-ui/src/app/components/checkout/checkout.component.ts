@@ -298,13 +298,16 @@ export class CheckoutComponent {
   }
 
   resetCart() {
+
      // reset cart data
      this.cartService.cartItems = [];
      this.cartService.totalPrice.next(0);
      this.cartService.totalQuantity.next(0);
+     this.cartService.persistCartItems();
 
      // reset the form
      this.checkoutFormGroup.reset();
+
 
      // navigate back to the products page
      this.router.navigateByUrl("/products");
